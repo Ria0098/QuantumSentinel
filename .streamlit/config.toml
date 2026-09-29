@@ -1,0 +1,78 @@
+[theme]
+base = "dark"
+primaryColor = "#22D3EE"
+backgroundColor = "#0B1220"
+secondaryBackgroundColor = "#111A2E"
+textColor = "#E6EDF7"
+borderColor = "#24324F"
+codeBackgroundColor = "#111A2E"
+codeTextColor = "#E6EDF7"
+linkColor = "#38BDF8"
+
+# Brand palette: quantum cyan + violet accents, semantic safe/threat/warning/info.
+redColor = "#EF4444"
+orangeColor = "#F59E0B"
+yellowColor = "#FACC15"
+greenColor = "#22C55E"
+blueColor = "#38BDF8"
+violetColor = "#8B5CF6"
+grayColor = "#93A4C3"
+
+# Chart series: statistical = cyan (safe/info), pauli = violet (secondary).
+chartCategoricalColors = ["#22D3EE", "#8B5CF6", "#38BDF8", "#22C55E", "#F59E0B", "#EF4444", "#93A4C3"]
+
+# Typography: Inter for UI, JetBrains Mono for values.
+font = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+headingFont = "Inter:https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap"
+codeFont = "'JetBrains Mono':https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap"
+codeFontSize = "0.875rem"
+baseFontSize = 15
+baseFontWeight = 400
+headingFontSizes = ["2.0rem", "1.5rem", "1.2rem", "1.05rem", "0.95rem", "0.9rem"]
+headingFontWeights = [700, 650, 600, 600, 600, 500]
+linkUnderline = false
+
+baseRadius = "8px"
+buttonRadius = "8px"
+showWidgetBorder = true
+showSidebarBorder = true
+
+# Light theme variant (users can toggle via the app menu). No custom CSS dependence;
+# ui/theme.py reads st.context.theme.type to keep charts and components consistent.
+[theme.light]
+primaryColor = "#0E7490"
+backgroundColor = "#F5F8FC"
+secondaryBackgroundColor = "#E9EFF7"
+textColor = "#12203A"
+borderColor = "#CBD8E8"
+codeBackgroundColor = "#E9EFF7"
+codeTextColor = "#12203A"
+linkColor = "#0E7490"
+
+redColor = "#DC2626"
+orangeColor = "#D97706"
+yellowColor = "#CA8A04"
+greenColor = "#16A34A"
+blueColor = "#0284C7"
+violetColor = "#7C3AED"
+grayColor = "#5B6B85"
+
+chartCategoricalColors = ["#0891B2", "#7C3AED", "#0369A1", "#16A34A", "#D97706", "#DC2626", "#64748B"]
+
+[theme.dark.sidebar]
+backgroundColor = "#0A111F"
+secondaryBackgroundColor = "#111A2E"
+textColor = "#E6EDF7"
+borderColor = "#24324F"
+
+[theme.light.sidebar]
+backgroundColor = "#EEF3FA"
+secondaryBackgroundColor = "#E9EFF7"
+textColor = "#12203A"
+borderColor = "#CBD8E8"
+
+[server]
+headless = true
+
+[browser]
+gatherUsageStats = false

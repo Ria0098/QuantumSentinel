@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qsentinel"
+version = "1.0.0"
+description = "QuantumSigGuard - quantum-inspired cyber threat detection for teleportation-based QDS (SIH26141)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+web = [
+    "streamlit>=1.40",
+    "pandas>=2.0",
+    "altair>=5.0",
+]
+
+[project.scripts]
+qsentinel-demo = "qsentinel.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["qsentinel*"]
+
+[tool.setuptools]
+py-modules = ["run_demo"]

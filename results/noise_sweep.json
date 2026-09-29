@@ -1,0 +1,106 @@
+{
+  "decoherence_rates": [
+    {
+      "decoherence_rate": 0.0,
+      "trials": 300,
+      "statistical_detection_rate": 1.0,
+      "statistical_detection_rate_ci95": [
+        0.9848667005045553,
+        0.9999999999999998
+      ],
+      "statistical_false_alarm_rate": 0.0,
+      "statistical_false_alarm_ci95": [
+        6.4438204832223495e-18,
+        0.07134759913335872
+      ],
+      "pauli_detection_rate": 0.6,
+      "pauli_false_alarm_rate": 0.0,
+      "mean_runtime_seconds": 0.011234719173201787
+    },
+    {
+      "decoherence_rate": 0.002,
+      "trials": 300,
+      "statistical_detection_rate": 1.0,
+      "statistical_detection_rate_ci95": [
+        0.9848667005045553,
+        0.9999999999999998
+      ],
+      "statistical_false_alarm_rate": 0.0,
+      "statistical_false_alarm_ci95": [
+        6.4438204832223495e-18,
+        0.07134759913335872
+      ],
+      "pauli_detection_rate": 0.6,
+      "pauli_false_alarm_rate": 0.0,
+      "mean_runtime_seconds": 0.011334788863362822
+    },
+    {
+      "decoherence_rate": 0.005,
+      "trials": 300,
+      "statistical_detection_rate": 1.0,
+      "statistical_detection_rate_ci95": [
+        0.9848667005045553,
+        0.9999999999999998
+      ],
+      "statistical_false_alarm_rate": 0.0,
+      "statistical_false_alarm_ci95": [
+        6.4438204832223495e-18,
+        0.07134759913335872
+      ],
+      "pauli_detection_rate": 0.6,
+      "pauli_false_alarm_rate": 0.0,
+      "mean_runtime_seconds": 0.011357686093348699
+    },
+    {
+      "decoherence_rate": 0.01,
+      "trials": 300,
+      "statistical_detection_rate": 1.0,
+      "statistical_detection_rate_ci95": [
+        0.9848667005045553,
+        0.9999999999999998
+      ],
+      "statistical_false_alarm_rate": 0.0,
+      "statistical_false_alarm_ci95": [
+        6.4438204832223495e-18,
+        0.07134759913335872
+      ],
+      "pauli_detection_rate": 0.6,
+      "pauli_false_alarm_rate": 0.0,
+      "mean_runtime_seconds": 0.011146654833040278
+    },
+    {
+      "decoherence_rate": 0.02,
+      "trials": 300,
+      "statistical_detection_rate": 1.0,
+      "statistical_detection_rate_ci95": [
+        0.9848667005045553,
+        0.9999999999999998
+      ],
+      "statistical_false_alarm_rate": 0.0,
+      "statistical_false_alarm_ci95": [
+        6.4438204832223495e-18,
+        0.07134759913335872
+      ],
+      "pauli_detection_rate": 0.6,
+      "pauli_false_alarm_rate": 0.0,
+      "mean_runtime_seconds": 0.011148649563474465
+    },
+    {
+      "decoherence_rate": 0.05,
+      "trials": 300,
+      "statistical_detection_rate": 1.0,
+      "statistical_detection_rate_ci95": [
+        0.9848667005045553,
+        0.9999999999999998
+      ],
+      "statistical_false_alarm_rate": 1.0,
+      "statistical_false_alarm_ci95": [
+        0.9286524008666414,
+        1.0
+      ],
+      "pauli_detection_rate": 1.0,
+      "pauli_false_alarm_rate": 1.0,
+      "mean_runtime_seconds": 0.011113843906617451
+    }
+  ]
+}

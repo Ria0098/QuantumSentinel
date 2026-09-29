@@ -1,0 +1,128 @@
+{
+  "label": "trials_per_attack=200",
+  "config": {
+    "seed": 20260101,
+    "protocol": {
+      "message_length": 8,
+      "copies_per_bit": 4,
+      "witness_pairs": 8,
+      "parity_group_size": 2,
+      "test_qubit_count": 32,
+      "parity_group_count": 16
+    },
+    "channel": {
+      "decoherence_rate": 0.0,
+      "message_tamper_rate": 0.0,
+      "loss_rate": 0.0
+    },
+    "detection": {
+      "mismatch_threshold": 0.05,
+      "qber_threshold": 0.02,
+      "per_basis_qber_threshold": 0.05,
+      "distribution_distance_threshold": 0.2,
+      "correlator_agreement_threshold": 0.9,
+      "parity_expectation_threshold": 0.9
+    }
+  },
+  "total_trials": 1200,
+  "statistical": {
+    "true_positives": 1000,
+    "false_positives": 0,
+    "true_negatives": 200,
+    "false_negatives": 0,
+    "total": 1200,
+    "detection_rate": 1.0,
+    "false_alarm_rate": 0.0,
+    "accuracy": 1.0,
+    "detection_rate_ci95": [
+      0.9961732415144449,
+      1.0
+    ],
+    "false_alarm_rate_ci95": [
+      1.7020320458977177e-18,
+      0.018845326377266575
+    ]
+  },
+  "pauli_measurement": {
+    "true_positives": 600,
+    "false_positives": 0,
+    "true_negatives": 200,
+    "false_negatives": 400,
+    "total": 1200,
+    "detection_rate": 0.6,
+    "false_alarm_rate": 0.0,
+    "accuracy": 0.6666666666666666,
+    "detection_rate_ci95": [
+      0.5693094295142663,
+      0.6299252187886226
+    ],
+    "false_alarm_rate_ci95": [
+      1.7020320458977177e-18,
+      0.018845326377266575
+    ]
+  },
+  "per_attack": [
+    {
+      "attack": "legitimate",
+      "is_attack": false,
+      "trials": 200,
+      "statistical_detected": 0,
+      "pauli_detected": 0,
+      "protocol_rejected": 0,
+      "mean_mismatch_rate": 0.0,
+      "detection_rate": null
+    },
+    {
+      "attack": "forgery",
+      "is_attack": true,
+      "trials": 200,
+      "statistical_detected": 200,
+      "pauli_detected": 200,
+      "protocol_rejected": 200,
+      "mean_mismatch_rate": 0.234375,
+      "detection_rate": 1.0
+    },
+    {
+      "attack": "impersonation",
+      "is_attack": true,
+      "trials": 200,
+      "statistical_detected": 200,
+      "pauli_detected": 200,
+      "protocol_rejected": 200,
+      "mean_mismatch_rate": 0.265625,
+      "detection_rate": 1.0
+    },
+    {
+      "attack": "replay",
+      "is_attack": true,
+      "trials": 200,
+      "statistical_detected": 200,
+      "pauli_detected": 0,
+      "protocol_rejected": 200,
+      "mean_mismatch_rate": 0.0,
+      "detection_rate": 1.0
+    },
+    {
+      "attack": "unauthorized_verification",
+      "is_attack": true,
+      "trials": 200,
+      "statistical_detected": 200,
+      "pauli_detected": 0,
+      "protocol_rejected": 200,
+      "mean_mismatch_rate": 0.0,
+      "detection_rate": 1.0
+    },
+    {
+      "attack": "channel_manipulation",
+      "is_attack": true,
+      "trials": 200,
+      "statistical_detected": 200,
+      "pauli_detected": 200,
+      "protocol_rejected": 200,
+      "mean_mismatch_rate": 0.5,
+      "detection_rate": 1.0
+    }
+  ],
+  "mean_runtime_seconds": 0.011100231104883278,
+  "total_runtime_seconds": 13.320277325859934
+}

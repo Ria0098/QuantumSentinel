@@ -1,0 +1,1155 @@
+[
+  {
+    "scenario": "legitimate",
+    "title": "Legitimate transaction",
+    "is_attack": false,
+    "notes": "No disturbance applied. This is the false-alarm baseline.",
+    "expected_quantum_visible": false,
+    "accepted_by_protocol": true,
+    "elapsed_seconds": 0.011090584004705306,
+    "comparison": {
+      "statistical": false,
+      "pauli_measurement": false,
+      "agree": true
+    },
+    "verification": {
+      "signature_valid": true,
+      "freshness_ok": true,
+      "authorisation_ok": true,
+      "reject_reason": "",
+      "mismatch_count": 0,
+      "check_count": 64,
+      "mismatch_rate": 0.0,
+      "failing_checks": []
+    },
+    "detection_measures": {
+      "mismatch_rate": {
+        "name": "mismatch_rate",
+        "value": 0.0,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": false
+      },
+      "qber": {
+        "name": "qber",
+        "value": 0.0,
+        "threshold": 0.02,
+        "comparison": ">",
+        "tripped": false
+      },
+      "per_basis_qber_X": {
+        "name": "per_basis_qber_X",
+        "value": 0.0,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": false
+      },
+      "per_basis_qber_Z": {
+        "name": "per_basis_qber_Z",
+        "value": 0.0,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": false
+      },
+      "coverage_shortfall": {
+        "name": "coverage_shortfall",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "replay": {
+        "name": "replay",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "authorisation": {
+        "name": "authorisation",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "eigenvalue_agreement_X": {
+        "name": "eigenvalue_agreement_X",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      },
+      "basis_distribution_distance_X": {
+        "name": "basis_distribution_distance_X",
+        "value": 0.0,
+        "threshold": 0.2,
+        "comparison": ">",
+        "tripped": false
+      },
+      "parity_agreement_X": {
+        "name": "parity_agreement_X",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      },
+      "eigenvalue_agreement_Z": {
+        "name": "eigenvalue_agreement_Z",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      },
+      "basis_distribution_distance_Z": {
+        "name": "basis_distribution_distance_Z",
+        "value": 0.0,
+        "threshold": 0.2,
+        "comparison": ">",
+        "tripped": false
+      },
+      "parity_agreement_Z": {
+        "name": "parity_agreement_Z",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      },
+      "entanglement_witness": {
+        "name": "entanglement_witness",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      }
+    }
+  },
+  {
+    "scenario": "forgery",
+    "title": "Signature forgery",
+    "is_attack": true,
+    "notes": "Guessed 4/8 key bits correctly. At the remaining 4 positions the forged qubit is an eigenstate of the wrong Pauli operator, so the verifier's own-basis measurement returns a random +-1 with probability 1.",
+    "expected_quantum_visible": true,
+    "accepted_by_protocol": false,
+    "elapsed_seconds": 0.010550957995292265,
+    "comparison": {
+      "statistical": true,
+      "pauli_measurement": true,
+      "agree": true
+    },
+    "verification": {
+      "signature_valid": false,
+      "freshness_ok": true,
+      "authorisation_ok": true,
+      "reject_reason": "per-copy measurement mismatch; distillation parity mismatch",
+      "mismatch_count": 14,
+      "check_count": 64,
+      "mismatch_rate": 0.21875,
+      "failing_checks": [
+        {
+          "label": "pos4.copy0",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos5.copy0",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos5.copy2",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos5.copy3",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos6.copy0",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos6.copy1",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos7.copy1",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos7.copy2",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos7.copy3",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos4.group0",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(Z x 2) cat-state parity"
+        },
+        {
+          "label": "pos4.group1",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(Z x 2) cat-state parity"
+        },
+        {
+          "label": "pos5.group1",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(X x 2) cat-state parity"
+        },
+        {
+          "label": "pos6.group0",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(Z x 2) cat-state parity"
+        },
+        {
+          "label": "pos7.group1",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(X x 2) cat-state parity"
+        }
+      ]
+    },
+    "detection_measures": {
+      "mismatch_rate": {
+        "name": "mismatch_rate",
+        "value": 0.21875,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": true
+      },
+      "qber": {
+        "name": "qber",
+        "value": 0.28125,
+        "threshold": 0.02,
+        "comparison": ">",
+        "tripped": true
+      },
+      "per_basis_qber_X": {
+        "name": "per_basis_qber_X",
+        "value": 0.6666666666666666,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": true
+      },
+      "per_basis_qber_Z": {
+        "name": "per_basis_qber_Z",
+        "value": 0.4,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": true
+      },
+      "coverage_shortfall": {
+        "name": "coverage_shortfall",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "replay": {
+        "name": "replay",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "authorisation": {
+        "name": "authorisation",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "eigenvalue_agreement_X": {
+        "name": "eigenvalue_agreement_X",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      },
+      "basis_distribution_distance_X": {
+        "name": "basis_distribution_distance_X",
+        "value": 0.0,
+        "threshold": 0.2,
+        "comparison": ">",
+        "tripped": false
+      },
+      "parity_agreement_X": {
+        "name": "parity_agreement_X",
+        "value": 0.6666666666666666,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": true
+      },
+      "eigenvalue_agreement_Z": {
+        "name": "eigenvalue_agreement_Z",
+        "value": 0.3333333333333333,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": true
+      },
+      "basis_distribution_distance_Z": {
+        "name": "basis_distribution_distance_Z",
+        "value": 0.0,
+        "threshold": 0.2,
+        "comparison": ">",
+        "tripped": false
+      },
+      "parity_agreement_Z": {
+        "name": "parity_agreement_Z",
+        "value": 0.7,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": true
+      },
+      "entanglement_witness": {
+        "name": "entanglement_witness",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      }
+    }
+  },
+  {
+    "scenario": "impersonation",
+    "title": "Sender impersonation",
+    "is_attack": true,
+    "notes": "'mallory' submitted a signature bound to their own key while claiming to be 'alice'. The key differs on 6 of 8 positions, so those qubits are eigenstates of the wrong Pauli operator.",
+    "expected_quantum_visible": true,
+    "accepted_by_protocol": false,
+    "elapsed_seconds": 0.010863750001590233,
+    "comparison": {
+      "statistical": true,
+      "pauli_measurement": true,
+      "agree": true
+    },
+    "verification": {
+      "signature_valid": false,
+      "freshness_ok": true,
+      "authorisation_ok": true,
+      "reject_reason": "per-copy measurement mismatch; distillation parity mismatch",
+      "mismatch_count": 15,
+      "check_count": 64,
+      "mismatch_rate": 0.234375,
+      "failing_checks": [
+        {
+          "label": "pos1.copy1",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos1.copy2",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos2.copy0",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos3.copy1",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos3.copy2",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos3.copy3",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos4.copy0",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos4.copy1",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos6.copy0",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos6.copy3",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos1.group0",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(Z x 2) cat-state parity"
+        },
+        {
+          "label": "pos3.group0",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(Z x 2) cat-state parity"
+        },
+        {
+          "label": "pos4.group0",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(Z x 2) cat-state parity"
+        },
+        {
+          "label": "pos4.group1",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(Z x 2) cat-state parity"
+        },
+        {
+          "label": "pos5.group0",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(X x 2) cat-state parity"
+        }
+      ]
+    },
+    "detection_measures": {
+      "mismatch_rate": {
+        "name": "mismatch_rate",
+        "value": 0.234375,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": true
+      },
+      "qber": {
+        "name": "qber",
+        "value": 0.3125,
+        "threshold": 0.02,
+        "comparison": ">",
+        "tripped": true
+      },
+      "per_basis_qber_X": {
+        "name": "per_basis_qber_X",
+        "value": 0.5,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": true
+      },
+      "per_basis_qber_Z": {
+        "name": "per_basis_qber_Z",
+        "value": 1.0,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": true
+      },
+      "coverage_shortfall": {
+        "name": "coverage_shortfall",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "replay": {
+        "name": "replay",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "authorisation": {
+        "name": "authorisation",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "eigenvalue_agreement_X": {
+        "name": "eigenvalue_agreement_X",
+        "value": 1.0000000000000002,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      },
+      "basis_distribution_distance_X": {
+        "name": "basis_distribution_distance_X",
+        "value": 0.08333333333333331,
+        "threshold": 0.2,
+        "comparison": ">",
+        "tripped": false
+      },
+      "parity_agreement_X": {
+        "name": "parity_agreement_X",
+        "value": 0.875,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": true
+      },
+      "eigenvalue_agreement_Z": {
+        "name": "eigenvalue_agreement_Z",
+        "value": 4.266421588589643e-17,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": true
+      },
+      "basis_distribution_distance_Z": {
+        "name": "basis_distribution_distance_Z",
+        "value": 0.0,
+        "threshold": 0.2,
+        "comparison": ">",
+        "tripped": false
+      },
+      "parity_agreement_Z": {
+        "name": "parity_agreement_Z",
+        "value": 0.5,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": true
+      },
+      "entanglement_witness": {
+        "name": "entanglement_witness",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      }
+    }
+  },
+  {
+    "scenario": "replay",
+    "title": "Replay attack",
+    "is_attack": true,
+    "notes": "Replayed transaction 1ab940301548ef89 (nonce 102614821015). The quantum transcript is identical to the original, so only the classical freshness check can see it.",
+    "expected_quantum_visible": false,
+    "accepted_by_protocol": false,
+    "elapsed_seconds": 0.010717375000240281,
+    "comparison": {
+      "statistical": true,
+      "pauli_measurement": false,
+      "agree": false
+    },
+    "verification": {
+      "signature_valid": true,
+      "freshness_ok": false,
+      "authorisation_ok": true,
+      "reject_reason": "nonce replay",
+      "mismatch_count": 0,
+      "check_count": 64,
+      "mismatch_rate": 0.0,
+      "failing_checks": []
+    },
+    "detection_measures": {
+      "mismatch_rate": {
+        "name": "mismatch_rate",
+        "value": 0.0,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": false
+      },
+      "qber": {
+        "name": "qber",
+        "value": 0.0,
+        "threshold": 0.02,
+        "comparison": ">",
+        "tripped": false
+      },
+      "per_basis_qber_X": {
+        "name": "per_basis_qber_X",
+        "value": 0.0,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": false
+      },
+      "per_basis_qber_Z": {
+        "name": "per_basis_qber_Z",
+        "value": 0.0,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": false
+      },
+      "coverage_shortfall": {
+        "name": "coverage_shortfall",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "replay": {
+        "name": "replay",
+        "value": 1.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": true
+      },
+      "authorisation": {
+        "name": "authorisation",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "eigenvalue_agreement_X": {
+        "name": "eigenvalue_agreement_X",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      },
+      "basis_distribution_distance_X": {
+        "name": "basis_distribution_distance_X",
+        "value": 0.0,
+        "threshold": 0.2,
+        "comparison": ">",
+        "tripped": false
+      },
+      "parity_agreement_X": {
+        "name": "parity_agreement_X",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      },
+      "eigenvalue_agreement_Z": {
+        "name": "eigenvalue_agreement_Z",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      },
+      "basis_distribution_distance_Z": {
+        "name": "basis_distribution_distance_Z",
+        "value": 0.0,
+        "threshold": 0.2,
+        "comparison": ">",
+        "tripped": false
+      },
+      "parity_agreement_Z": {
+        "name": "parity_agreement_Z",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      },
+      "entanglement_witness": {
+        "name": "entanglement_witness",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      }
+    }
+  },
+  {
+    "scenario": "unauthorized_verification",
+    "title": "Unauthorized verification attempt",
+    "is_attack": true,
+    "notes": "'eve' requested verification but is not in the authorised set ['alice', 'victor']. The quantum state is untouched.",
+    "expected_quantum_visible": false,
+    "accepted_by_protocol": false,
+    "elapsed_seconds": 0.010717333992943168,
+    "comparison": {
+      "statistical": true,
+      "pauli_measurement": false,
+      "agree": false
+    },
+    "verification": {
+      "signature_valid": true,
+      "freshness_ok": true,
+      "authorisation_ok": false,
+      "reject_reason": "unauthorised verifying entity",
+      "mismatch_count": 0,
+      "check_count": 64,
+      "mismatch_rate": 0.0,
+      "failing_checks": []
+    },
+    "detection_measures": {
+      "mismatch_rate": {
+        "name": "mismatch_rate",
+        "value": 0.0,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": false
+      },
+      "qber": {
+        "name": "qber",
+        "value": 0.0,
+        "threshold": 0.02,
+        "comparison": ">",
+        "tripped": false
+      },
+      "per_basis_qber_X": {
+        "name": "per_basis_qber_X",
+        "value": 0.0,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": false
+      },
+      "per_basis_qber_Z": {
+        "name": "per_basis_qber_Z",
+        "value": 0.0,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": false
+      },
+      "coverage_shortfall": {
+        "name": "coverage_shortfall",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "replay": {
+        "name": "replay",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "authorisation": {
+        "name": "authorisation",
+        "value": 1.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": true
+      },
+      "eigenvalue_agreement_X": {
+        "name": "eigenvalue_agreement_X",
+        "value": 1.0000000000000002,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      },
+      "basis_distribution_distance_X": {
+        "name": "basis_distribution_distance_X",
+        "value": 0.0,
+        "threshold": 0.2,
+        "comparison": ">",
+        "tripped": false
+      },
+      "parity_agreement_X": {
+        "name": "parity_agreement_X",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      },
+      "eigenvalue_agreement_Z": {
+        "name": "eigenvalue_agreement_Z",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      },
+      "basis_distribution_distance_Z": {
+        "name": "basis_distribution_distance_Z",
+        "value": 0.0,
+        "threshold": 0.2,
+        "comparison": ">",
+        "tripped": false
+      },
+      "parity_agreement_Z": {
+        "name": "parity_agreement_Z",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      },
+      "entanglement_witness": {
+        "name": "entanglement_witness",
+        "value": 1.0,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": false
+      }
+    }
+  },
+  {
+    "scenario": "channel_manipulation",
+    "title": "Quantum channel manipulation",
+    "is_attack": true,
+    "notes": "Pauli errors on 100% of copies, forged classical teleportation bits on 50%, 0% of copies dropped, and 50% of witness pairs disturbed.",
+    "expected_quantum_visible": true,
+    "accepted_by_protocol": false,
+    "elapsed_seconds": 0.011700709001161158,
+    "comparison": {
+      "statistical": true,
+      "pauli_measurement": true,
+      "agree": true
+    },
+    "verification": {
+      "signature_valid": false,
+      "freshness_ok": true,
+      "authorisation_ok": true,
+      "reject_reason": "entanglement witness mismatch; per-copy measurement mismatch; distillation parity mismatch",
+      "mismatch_count": 29,
+      "check_count": 64,
+      "mismatch_rate": 0.453125,
+      "failing_checks": [
+        {
+          "label": "pos0.copy1",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos1.copy0",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos1.copy1",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos1.copy2",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos1.copy3",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos2.copy3",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos3.copy0",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos3.copy2",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos3.copy3",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos4.copy1",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos4.copy3",
+          "kind": "single",
+          "expected": -1,
+          "observed": 1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos5.copy0",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos6.copy0",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos6.copy1",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos6.copy3",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "Z-basis eigenvalue"
+        },
+        {
+          "label": "pos7.copy0",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos7.copy1",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos7.copy2",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos7.copy3",
+          "kind": "single",
+          "expected": 1,
+          "observed": -1,
+          "detail": "X-basis eigenvalue"
+        },
+        {
+          "label": "pos0.group0",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(Z x 2) cat-state parity"
+        },
+        {
+          "label": "pos2.group1",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(Z x 2) cat-state parity"
+        },
+        {
+          "label": "pos3.group0",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(X x 2) cat-state parity"
+        },
+        {
+          "label": "pos4.group0",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(X x 2) cat-state parity"
+        },
+        {
+          "label": "pos4.group1",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(X x 2) cat-state parity"
+        },
+        {
+          "label": "pos5.group0",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(Z x 2) cat-state parity"
+        },
+        {
+          "label": "pos6.group1",
+          "kind": "parity",
+          "expected": 1,
+          "observed": -1,
+          "detail": "(Z x 2) cat-state parity"
+        },
+        {
+          "label": "witness2",
+          "kind": "witness",
+          "expected": 1,
+          "observed": 1,
+          "detail": "Z-basis Bell correlators"
+        },
+        {
+          "label": "witness3",
+          "kind": "witness",
+          "expected": 1,
+          "observed": 1,
+          "detail": "X-basis Bell correlators"
+        },
+        {
+          "label": "witness5",
+          "kind": "witness",
+          "expected": 1,
+          "observed": 1,
+          "detail": "X-basis Bell correlators"
+        }
+      ]
+    },
+    "detection_measures": {
+      "mismatch_rate": {
+        "name": "mismatch_rate",
+        "value": 0.453125,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": true
+      },
+      "qber": {
+        "name": "qber",
+        "value": 0.59375,
+        "threshold": 0.02,
+        "comparison": ">",
+        "tripped": true
+      },
+      "per_basis_qber_X": {
+        "name": "per_basis_qber_X",
+        "value": 0.8125,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": true
+      },
+      "per_basis_qber_Z": {
+        "name": "per_basis_qber_Z",
+        "value": 0.375,
+        "threshold": 0.05,
+        "comparison": ">",
+        "tripped": true
+      },
+      "coverage_shortfall": {
+        "name": "coverage_shortfall",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "replay": {
+        "name": "replay",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "authorisation": {
+        "name": "authorisation",
+        "value": 0.0,
+        "threshold": 0.0,
+        "comparison": ">",
+        "tripped": false
+      },
+      "eigenvalue_agreement_X": {
+        "name": "eigenvalue_agreement_X",
+        "value": -0.7500000000000002,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": true
+      },
+      "basis_distribution_distance_X": {
+        "name": "basis_distribution_distance_X",
+        "value": 0.0625,
+        "threshold": 0.2,
+        "comparison": ">",
+        "tripped": false
+      },
+      "parity_agreement_X": {
+        "name": "parity_agreement_X",
+        "value": 0.625,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": true
+      },
+      "eigenvalue_agreement_Z": {
+        "name": "eigenvalue_agreement_Z",
+        "value": 0.16666666666666666,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": true
+      },
+      "basis_distribution_distance_Z": {
+        "name": "basis_distribution_distance_Z",
+        "value": 0.25,
+        "threshold": 0.2,
+        "comparison": ">",
+        "tripped": true
+      },
+      "parity_agreement_Z": {
+        "name": "parity_agreement_Z",
+        "value": 0.5,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": true
+      },
+      "entanglement_witness": {
+        "name": "entanglement_witness",
+        "value": 0.625,
+        "threshold": 0.9,
+        "comparison": "<",
+        "tripped": true
+      }
+    }
+  }
+]

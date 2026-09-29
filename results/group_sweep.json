@@ -1,0 +1,56 @@
+{
+  "parity_group_sizes": [
+    {
+      "parity_group_size": 1,
+      "trials": 100,
+      "parity_group_count": 32,
+      "statistical_detection_rate": 1.0,
+      "pauli_detection_rate": 1.0,
+      "statistical_false_alarm_rate": 0.0,
+      "pauli_false_alarm_rate": 0.0,
+      "mean_mismatch_rate": 0.275,
+      "mean_runtime_seconds": 0.012153769559081411,
+      "mean_mismatch_rate_legitimate": 0.0,
+      "mean_mismatch_rate_attack": 0.55
+    },
+    {
+      "parity_group_size": 2,
+      "trials": 100,
+      "parity_group_count": 16,
+      "statistical_detection_rate": 1.0,
+      "pauli_detection_rate": 1.0,
+      "statistical_false_alarm_rate": 0.0,
+      "pauli_false_alarm_rate": 0.0,
+      "mean_mismatch_rate": 0.25,
+      "mean_runtime_seconds": 0.012041179630250554,
+      "mean_mismatch_rate_legitimate": 0.0,
+      "mean_mismatch_rate_attack": 0.5
+    },
+    {
+      "parity_group_size": 3,
+      "trials": 100,
+      "parity_group_count": 8,
+      "statistical_detection_rate": 1.0,
+      "pauli_detection_rate": 1.0,
+      "statistical_false_alarm_rate": 0.0,
+      "pauli_false_alarm_rate": 0.0,
+      "mean_mismatch_rate": 0.25,
+      "mean_runtime_seconds": 0.011767700029886329,
+      "mean_mismatch_rate_legitimate": 0.0,
+      "mean_mismatch_rate_attack": 0.5
+    },
+    {
+      "parity_group_size": 4,
+      "trials": 100,
+      "parity_group_count": 8,
+      "statistical_detection_rate": 1.0,
+      "pauli_detection_rate": 1.0,
+      "statistical_false_alarm_rate": 0.0,
+      "pauli_false_alarm_rate": 0.0,
+      "mean_mismatch_rate": 0.23214285714285715,
+      "mean_runtime_seconds": 0.01169819044007454,
+      "mean_mismatch_rate_legitimate": 0.0,
+      "mean_mismatch_rate_attack": 0.4642857142857143
+    }
+  ]
+}

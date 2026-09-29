@@ -1,0 +1,24 @@
+{
+  "seed": 20260101,
+  "protocol": {
+    "message_length": 8,
+    "copies_per_bit": 4,
+    "witness_pairs": 8,
+    "parity_group_size": 2,
+    "test_qubit_count": 32,
+    "parity_group_count": 16
+  },
+  "channel": {
+    "decoherence_rate": 0.0,
+    "message_tamper_rate": 0.0,
+    "loss_rate": 0.0
+  },
+  "detection": {
+    "mismatch_threshold": 0.05,
+    "qber_threshold": 0.02,
+    "per_basis_qber_threshold": 0.05,
+    "distribution_distance_threshold": 0.2,
+    "correlator_agreement_threshold": 0.9,
+    "parity_expectation_threshold": 0.9
+  }
+}
