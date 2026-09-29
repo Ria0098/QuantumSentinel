@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any
 
 import pandas as pd
+import streamlit as st
 
 from qsentinel.attacks import ATTACK_ORDER, describe_attacks
 from qsentinel.config import PRESETS
@@ -39,8 +40,12 @@ def _load_json(name: str) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def load_bundle() -> dict[str, Any]:
-    """Read the pre-generated ``results/`` artifacts (or ``None`` when absent)."""
+def _bundle_mtime() -> float:
+    """Newest mtime across the results JSON files (cache key for `load_bundle`)."""
+    return max((p.stat().st_mtime for p in RESULTS.glob("*.json")), default=0.0)
+
+
+def _read_bundle() -> dict[str, Any]:
     return {
         "config": _load_json("config"),
         "scenarios": _load_json("scenarios"),
@@ -48,6 +53,20 @@ def load_bundle() -> dict[str, Any]:
         "noise_sweep": _load_json("noise_sweep"),
         "group_sweep": _load_json("group_sweep"),
     }
+
+
+@st.cache_data(show_spinner="False")
+def _load_bundle_cached(_mtime: float) -> dict[str, Any]:
+    return _read_bundle()
+
+
+def load_bundle() -> dict[str, Any]:
+    """Read the pre-generated ``results/`` artifacts (or ``None`` when absent).
+
+    Parsing is cached against the newest file mtime, so reruns reuse the parsed
+    JSON but regenerating ``results/`` invalidates the cache automatically.
+    """
+    return _load_bundle_cached(_bundle_mtime())
 
 
 # ------------------------------------------------------------ engine front-ends
@@ -233,6 +252,55 @@ def scenario_overview_frame(scenarios: list[dict]) -> pd.DataFrame:
             }
         )
     return pd.DataFrame(rows, columns=["scenario", "ground truth", "statistical", "pauli", "protocol"])
+
+
+def noise_summary(rows: list[dict]) -> str:
+    """One-line reading of the decoherence sweep, derived from the data.
+
+    Stated in terms of the false-alarm rate because that is what actually
+    degrades first: a noisy channel makes the statistical layer trip on benign
+    traffic, so detection rate alone hides the failure.
+    """
+    if not rows:
+        return "No decoherence data."
+    clean = [r for r in rows if r["statistical_false_alarm_rate"] == 0.0]
+    worst = max(rows, key=lambda r: r["decoherence_rate"])
+    if not clean:
+        return (
+            "The statistical layer already false-alarms on benign traffic at the "
+            f"lowest noise level tested (p={rows[0]['decoherence_rate']:.3f})."
+        )
+    last_clean = max(clean, key=lambda r: r["decoherence_rate"])
+    return (
+        f"False alarms stay at 0.000 up to p={last_clean['decoherence_rate']:.3f}. "
+        f"At p={worst['decoherence_rate']:.3f} the false-alarm rate jumps to "
+        f"{worst['statistical_false_alarm_rate']:.3f} while detection stays at "
+        f"{worst['statistical_detection_rate']:.3f} — the layer flags everything, "
+        f"so it stops discriminating rather than stops detecting."
+    )
+
+
+def group_summary(rows: list[dict]) -> str:
+    """One-line reading of the group-size sweep, derived from the data."""
+    if not rows:
+        return "No group-size data."
+    rates = [
+        r["statistical_detection_rate"] for r in rows
+    ] + [r["pauli_detection_rate"] for r in rows]
+    if len(set(rates)) == 1 and rates[0] == 1.0:
+        counts = [r["parity_group_count"] for r in rows]
+        return (
+            f"Every group size g={rows[0]['parity_group_size']}..{rows[-1]['parity_group_size']} "
+            f"holds 1.000 detection on both layers, while the parity-group count drops "
+            f"{counts[0]} → {counts[-1]} — same detection, fewer measurements."
+        )
+    return (
+        f"Detection varies with group size: statistical "
+        f"{min(r['statistical_detection_rate'] for r in rows):.3f}–"
+        f"{max(r['statistical_detection_rate'] for r in rows):.3f}, Pauli "
+        f"{min(r['pauli_detection_rate'] for r in rows):.3f}–"
+        f"{max(r['pauli_detection_rate'] for r in rows):.3f}."
+    )
 
 
 # ----------------------------------------------------------------- presentation-only

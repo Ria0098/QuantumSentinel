@@ -1,5 +1,5 @@
-"""QuantumSigGuard UI layer — theme tokens, global styling and shared components."""
+"""QuantumSigGuard UI layer — chart theming and shared native components."""
 
-from ui.theme import inject_css, register_altair_theme  # noqa: F401
+from ui.theme import register_altair_theme  # noqa: F401
 
-__all__ = ["inject_css", "register_altair_theme"]
+__all__ = ["register_altair_theme"]

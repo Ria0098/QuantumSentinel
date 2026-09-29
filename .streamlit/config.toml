@@ -74,5 +74,9 @@ borderColor = "#CBD8E8"
 [server]
 headless = true
 
+[client]
+# Local read-only viewer — the cloud deploy button and options menu are noise.
+toolbarMode = "viewer"
+
 [browser]
 gatherUsageStats = false

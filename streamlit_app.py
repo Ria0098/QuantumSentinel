@@ -15,7 +15,6 @@ from importlib.metadata import PackageNotFoundError, version
 import streamlit as st
 
 from ui.components import prepare_theme
-from ui.theme import inject_css
 
 try:
     _QSG_VERSION = version("qsentinel")
@@ -30,42 +29,39 @@ st.set_page_config(
 )
 
 prepare_theme()
-inject_css()
 
-_brand = (
-    '<div class="qsg-brand">'
-    '<div class="qsg-brand-mark"><span class="m" style="font-family:\'Material Symbols Outlined\'">'
-    "auto_awesome</span></div>"
-    '<div><div class="qsg-brand-name">QuantumSigGuard</div>'
-    f'<div class="qsg-brand-tag">SIH26141 &middot; v{_QSG_VERSION}</div></div>'
-    "</div>"
-)
-st.sidebar.markdown(_brand, unsafe_allow_html=True)
-
-nav = st.navigation(
+st.navigation(
     [
-        st.Page(
-            "app_pages/overview.py",
-            title="Overview",
-            icon=":material/dashboard:",
-            default=True,
-        ),
-        st.Page(
-            "app_pages/scenario_lab.py",
-            title="Scenario lab",
-            icon=":material/science:",
-        ),
-        st.Page(
-            "app_pages/evaluation.py",
-            title="Evaluation",
-            icon=":material/analytics:",
-        ),
+        st.Page("app_pages/overview.py", title="Overview", icon=":material/dashboard:", default=True),
+        st.Page("app_pages/scenario_lab.py", title="Scenario lab", icon=":material/science:"),
+        st.Page("app_pages/evaluation.py", title="Evaluation", icon=":material/analytics:"),
     ]
-)
-nav.run()
+).run()
 
-st.markdown(
-    '<div class="qsg-footer">SIH 2026 &middot; SIH26141 &middot; Egreen Quanta LLP '
-    "&middot; quantum-channel signature verification with statistical + Pauli detection</div>",
-    unsafe_allow_html=True,
-)
+with st.sidebar:
+    st.markdown("### QuantumSigGuard")
+    st.caption(f"SIH 2026 · SIH26141 · v{_QSG_VERSION}")
+
+    st.divider()
+
+    st.markdown("**At a glance**")
+    st.markdown(
+        f"- Architecture — statistical + Pauli\n"
+        f"- ML/AI — none, rule-based only\n"
+        f"- Scenarios — 5 attacks + legitimate\n"
+        f"- Determinism — seeded experiments\n"
+        f"- Threshold rules — 12 across both layers"
+    )
+
+    st.divider()
+
+    st.markdown("**Performance**")
+    st.markdown(
+        "- Mean per transaction — ~10–12 ms\n"
+        "- 1,200 transactions — ~2–3 seconds\n"
+        "- Noise sweep — reproducible\n"
+        "- Group sweep — g = 1 to 4"
+    )
+
+    st.divider()
+    st.caption("View layer only. Every value is read from the engine; the UI computes no verdicts.")

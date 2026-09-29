@@ -12,3 +12,7 @@ env/
 .DS_Store
 .streamlit/secrets.toml
 .env
+
+# Generated submission/report document (not part of the source tree).
+# Note: QuantumSigGuard_SIH_Report.pdf stays tracked on purpose.
+/SIH26141.pdf
